@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { DatabaseService } from './database.service';
+import { Component } from '@angular/core';
+import { RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +7,6 @@ import { DatabaseService } from './database.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  title = 'frontend_angular';
-  events: any;
-
-  constructor(private dbService: DatabaseService) {}
-
-  ngOnInit(): void {
-    this.dbService.getEvents().subscribe((data) => {
-      this.events = data;
-    });
-  }
+export class AppComponent {
 
 }

@@ -1,0 +1,24 @@
+<main class="main">
+    @if(this.events) {
+      <div>
+        <table class="data-table">
+          <tr>
+            <th>ID</th>
+            <th>HOUSENAME</th>
+            <th>EVENTNAME</th>
+            <th>DATE</th>
+            <th>FAMILY</th>
+          </tr>
+          @for (item of this.events.data; track $index) {
+            <tr>
+              <td>{{ item.ID }}</td>
+              <td>{{ item.HOUSENAME }}</td>
+              <td>{{ item.EVENTNAME }}</td>
+              <td>{{ item.DATE }}</td>
+              <td>{{ item.FAMILY }}</td>
+            </tr>
+          }
+        </table>
+      </div>
+    }
+  </main>
