@@ -1,10 +1,15 @@
 import { Routes } from '@angular/router';
-import { DataDisplayComponent } from './data-display/data-display.component';
+import { EventsComponent } from './events/events.component';
 import { ErrorComponent } from './error/error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HousesComponent } from './houses/houses.component';
+
+
 
 export const routes: Routes = [
-    { path: '', component: DataDisplayComponent},
+    { path: '', component: HousesComponent},
+    { path: 'houses', component: HousesComponent},
+    { path: 'events', component: EventsComponent},
     { path: 'error', component: ErrorComponent},
     { path: "**", component: NotFoundComponent},
 ];

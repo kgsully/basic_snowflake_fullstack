@@ -2,4 +2,13 @@
   <h1>Snowflake Data Visualization</h1>
 </header>
 
-<router-outlet />
+<div class="container">
+  <div class="nav-sidebar">
+    <a [routerLink]="['houses']">Houses</a>
+    <a [routerLink]="['events']">Events</a>
+  </div>
+
+  <div class="nav-content">
+    <router-outlet />
+  </div>
+</div>

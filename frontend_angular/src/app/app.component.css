@@ -6,3 +6,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+}
+
+.nav-sidebar a {
+  display: block;
+  margin-top: 1rem;
+}

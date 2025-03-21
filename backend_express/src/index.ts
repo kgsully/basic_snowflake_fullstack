@@ -13,7 +13,7 @@ app.use(cors({
     origin: '*'
 }));
 
-const PORT = process.env.PORT || 5000; // Hard coding this for the purpose of this exercise, this value should come from an environment variable
+const PORT = process.env.PORT || 5000;
 
 
 app.get('/', (_req, res) => {
