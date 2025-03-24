@@ -1,11 +1,13 @@
 import express from 'express';
 import { Request, Response, NextFunction} from 'express';
-import { dbQuery } from './db';
+import { dbQuery } from './db/db';
 import cors from 'cors';
 require('dotenv').config()
+import routes from './routes';
 
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Added cors to enable frontend to reach backend in dev.
 // In a real application this shouldn't be set to *
@@ -13,25 +15,8 @@ app.use(cors({
     origin: '*'
 }));
 
-const PORT = process.env.PORT || 5000;
-
-
-app.get('/', (_req, res) => {
-    res.send({
-        message: "Success!!!!!",
-    })
-});
-
-app.get('/events', async (_req, res, next) => {
-    try {
-        const data = await dbQuery('SELECT * FROM EVENTS;');
-        res.json({
-            data
-        });
-    } catch (err: any) {
-        next(err);
-    }
-});
+// Add routes
+app.use(routes);
 
 app.listen(PORT, () => {
     console.log(`Now listening on port ${PORT}`);

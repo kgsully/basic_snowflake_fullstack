@@ -9,13 +9,13 @@
             <th>DATE</th>
             <th>FAMILY</th>
           </tr>
-          @for (item of this.events.data; track $index) {
+          @for (event of this.events; track $index) {
             <tr>
-              <td>{{ item.ID }}</td>
-              <td>{{ item.HOUSENAME }}</td>
-              <td>{{ item.EVENTNAME }}</td>
-              <td>{{ item.DATE }}</td>
-              <td>{{ item.FAMILY }}</td>
+              <td>{{ event.ID }}</td>
+              <td>{{ event.HOUSENAME }}</td>
+              <td>{{ event.EVENTNAME }}</td>
+              <td>{{ event.DATE }}</td>
+              <td>{{ event.FAMILY }}</td>
             </tr>
           }
         </table>
