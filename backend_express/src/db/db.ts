@@ -13,6 +13,15 @@ const connectionData = {
     schema: process.env.SCHEMA
 };
 
+// Initialize snowflake configuration
+export function dbConfig() {
+    snowflake.configure({
+        logLevel: "INFO",
+        logFilePath: "./snowflake.log",
+        additionalLogToConsole: false,
+    });
+}
+
 // Improvement would be to program reconnection logic if connection fails
 function connectToDb() {
     return new Promise((resolve, reject) => {
