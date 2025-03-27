@@ -37,6 +37,13 @@
           }
         }
       }
+    },
+    {
+      "label": "Stop Angular Server",
+      "type": "shell",
+      "command": "pkill -f 'ng serve'",
+      "problemMatcher": [],
+      "group": "none"
     }
   ]
 }

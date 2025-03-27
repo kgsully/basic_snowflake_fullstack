@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Backend",
+            "skipFiles": [
+              "${workspaceFolder}/node_modules/**",  // Skip all node_modules
+              "<node_internals>/**",                 // Skip internal Node.js modules
+              "**/node_modules/**",                  // Another way to ensure no node_modules are stepped into
+              "**/*.d.ts",                           // Skip TypeScript declaration files
+            ],
+            "program": "${workspaceFolder}/dist/app.js",  // Adjust to your compiled entry point
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],   // Ensure this points to your transpiled JS files
+            "sourceMaps": true,  // Ensure source maps are enabled for TypeScript debugging
+            "resolveSourceMapLocations": [
+              "${workspaceFolder}/dist/**/*.js",
+              "${workspaceFolder}/src/**/*.ts"
+            ],
+            "runtimeExecutable": "npm",  // Tells VS Code to use npm to run the script
+            "runtimeArgs": [
+                "run",  // Tells npm to run the specified script
+                "dev"  // Script name to run by default
+            ],
+            "console": "integratedTerminal"
+          }
+    ]
+}
