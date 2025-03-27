@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError, lastValueFrom, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +10,19 @@ export class DatabaseService {
 
   constructor(private http: HttpClient) { }
 
-  dbQuery(route: string) {
-    return this.http.get(`${this.baseUrl}${route}`);
+  apiGet<T>(route: string): Promise<T> {
+    return lastValueFrom(
+      this.http.get<{data: T}>(`${this.baseUrl}${route}`).pipe(
+        map((response) => response.data),
+        catchError((error) => {
+          return throwError(() => error);
+        })
+      )
+    )
   }
 
-  async getEvents() {
-    return new Promise((resolve) => {
-      this.dbQuery('events').subscribe((data:any) => {
-        if (data.error) {
-          resolve(data.error)
-        }
-        resolve(data.data);
-      });
-    });
+  getEvents(): Promise<Event[]> {
+    return this.apiGet<Event[]>('events');
   }
 
 }

@@ -1,6 +1,6 @@
 import express from 'express';
 import { Request, Response, NextFunction} from 'express';
-import { dbConfig, dbQuery } from './db/db';
+import { dbConfig } from './db/db';
 import cors from 'cors';
 require('dotenv').config()
 import routes from './routes';
@@ -21,12 +21,12 @@ app.use(cors({
 // Add routes
 app.use(routes);
 
-app.listen(PORT, () => {
-    console.log(`Now listening on port ${PORT}`);
-});
-
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
     res.send({
         error: err.message
     });
+});
+
+app.listen(PORT, () => {
+    console.log(`Now listening on port ${PORT}`);
 });

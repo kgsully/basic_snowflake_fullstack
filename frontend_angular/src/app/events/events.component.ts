@@ -19,11 +19,15 @@ export class EventsComponent implements OnInit{
   }
 
   async getEvents() {
-    const response: any = await this.dbService.getEvents();
+    try {
+      const response: any = await this.dbService.getEvents();
       if (response.error) {
-        this.router.navigate(['error'], { queryParams: {message: response.error} });
+        this.router.navigate(['error'], { queryParams: { message: response.error } });
       }
       this.events = response;
+    } catch (error: any) {
+      this.router.navigate(['error'], { queryParams: { message: error.message } });
+    }
   }
 
 }
