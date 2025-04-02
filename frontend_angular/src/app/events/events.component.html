@@ -1,24 +1,28 @@
-<div class="events-container">
-    @if(this.events) {
-      <div>
-        <table class="data-table">
-          <tr>
-            <th>ID</th>
-            <th>HOUSENAME</th>
-            <th>EVENTNAME</th>
-            <th>DATE</th>
-            <th>FAMILY</th>
-          </tr>
-          @for (event of this.events; track $index) {
-            <tr>
-              <td>{{ event.ID }}</td>
-              <td>{{ event.HOUSENAME }}</td>
-              <td>{{ event.EVENTNAME }}</td>
-              <td>{{ event.DATE }}</td>
-              <td>{{ event.FAMILY }}</td>
-            </tr>
-          }
-        </table>
+<div class="grid grid-cols-[1.5fr_1fr] mb-5">
+  <div>
+    <div class="grid grid-cols-5 place-items-center w-[48vw] mt-5 mb-5 font-bold text-xl text-sky-800 bg-white border-1 rounded-md shadow-md shadow-gray-200">
+      <span>ID</span>
+      <span>House Name</span>
+      <span>Event Name</span>
+      <span>Date</span>
+      <span>Family</span>
+    </div>
+    @defer(when eventsLoaded) {
+      <div class="max-h-[50vh] overflow-y-auto mb-5">
+        @for(event of events; track $index) {
+          <div class="grid grid-cols-5 place-items-center w-[48vw] rounded-sm even:bg-gray-200 odd:bg-white">
+            <span>{{ event.ID }}</span>
+            <span>{{ event.HOUSENAME }}</span>
+            <span>{{ event.EVENTNAME }}</span>
+            <span>{{ event.DATE }}</span>
+            <span>{{ event.FAMILY }}</span>
+          </div>
+        }
       </div>
     }
+  </div>
+  <div class="flex flex-col ml-10">
+    <app-event-form-filter [familyFilter]="familyFilter" (filterChange)="getEvents($event)"/>
+    <app-event-form-add (addEvent)="addEvent($event)" />
+  </div>
 </div>

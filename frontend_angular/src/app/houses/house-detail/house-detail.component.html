@@ -1,0 +1,46 @@
+@if(houseNotFound) {
+ <div>
+    House not found
+ </div>
+} @else {
+    @defer (when houseLoaded) {
+        <div class="flex flex-col justify-center items-center h-max-[70vh]">
+            <div class="flex justify-center w-[50vw] border-1 bg-white border-gray-200 rounded-md shadow shadow-gray-200">
+                <img class=" w-[40vw] mt-5 mb-5 object-contain" [src]="baseUrl + house.PHOTO" [alt]="`Photo of house ${house.PHOTO}`">
+            </div>
+
+            <div class="flex justify-around w-[50vw] mt-5 mb-5 pt-5 pb-5 bg-white border-1 border-gray-200 rounded-md shadow shadow-gray-200">
+                <div class="flex flex-col ml-2">
+                    <div class="font-bold text-xl text-sky-800 mb-2">House Info</div>
+                    <div>
+                        <span class="font-bold">Name:</span><span class="ml-2">{{ house.HOUSENAME }}</span>
+                    </div>
+                    <div>
+                        <span class="font-bold">Address: </span><span class="ml-2">{{ house.ADDRESS }}</span>
+                    </div>
+                </div>
+                @if(eventsNotFound) {
+                    <div class="font-bold text-l text-sky-800">No events found for this house</div>
+                }
+                @if(eventsLoaded) {
+                    <div class="mt-1 border-1 border-gray-200 rounded-md shadow shadow-gray-200">
+                        <table>
+                            <tr class="bg-sky-400 text-white">
+                                <th class="pl-8 pr-8">Event Name</th>
+                                <th class="pl-8 pr-8">Date</th>
+                                <th class="pl-8 pr-8">Family</th>
+                            </tr>
+                            @for(event of houseEvents; track $index) {
+                                <tr class="even:bg-gray-200">
+                                    <td class="text-center">{{ event.EVENTNAME }}</td>
+                                    <td class="text-center">{{ event.DATE }}</td>
+                                    <td class="text-center">{{ event.FAMILY }}</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}

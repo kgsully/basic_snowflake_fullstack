@@ -18,6 +18,8 @@ app.use(cors({
     origin: '*'
 }));
 
+app.use(express.json());
+
 // Add routes
 app.use(routes);
 

@@ -1,14 +1,14 @@
-<header>
+<header class="bg-white text-3xl font-extrabold text-sky-400 pl-3 pt-5 pb-5 shadow-md shadow-gray-200">
   <h1>Snowflake Data Visualization</h1>
 </header>
 
-<div class="container">
-  <div class="nav-sidebar">
-    <a [routerLink]="['houses']">Houses</a>
-    <a [routerLink]="['events']">Events</a>
+<div class="grid grid-cols-[1fr_9fr] justify-items-center">
+  <div class="flex flex-col justify-around  mt-5 bg-sky-400 text-xl text-white font-bold pt-3 pb-3 items-center rounded-md shadow-md shadow-gray-300 h-30 w-30">
+    <a class="m-2" [routerLink]="['houses']">Houses</a>
+    <a class="m-2" [routerLink]="['events']">Events</a>
   </div>
 
-  <div class="nav-content">
+  <div class="flex justify-center pt-5">
     <router-outlet />
   </div>
 </div>

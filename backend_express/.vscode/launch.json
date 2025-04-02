@@ -15,7 +15,7 @@
               "**/*.d.ts",                           // Skip TypeScript declaration files
             ],
             "program": "${workspaceFolder}/dist/app.js",  // Adjust to your compiled entry point
-            // "outFiles": ["${workspaceFolder}/dist/**/*.js"],   // Ensure this points to your transpiled JS files
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],   // Ensure this points to your transpiled JS files
             "sourceMaps": true,  // Ensure source maps are enabled for TypeScript debugging
             "resolveSourceMapLocations": [
               "${workspaceFolder}/dist/**/*.js",
